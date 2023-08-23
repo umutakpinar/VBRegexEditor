@@ -1,11 +1,5 @@
-//import * as monaco from 'monaco-editor';
-// import filecontroller
-//import { initFileOperations, getSavedRegexes } from './file_controller.js';
-
 const darkMode = document.getElementById('dark-mode');
 const modelSelector = document.getElementById('form-selector');
-const btnSaveRegex = document.getElementById('save-regex');
-const regexName = document.getElementById('regex-name');
 const regexPattern = document.getElementById('regex-pattern');
 
 require.config({ paths: { vs: '../node_modules/monaco-editor/min/vs' } });
@@ -50,12 +44,6 @@ require(['vs/editor/editor.main'], function () {
     searchWidget.style.left = "10px";
     searchWidget.style.width = "50%";
 
-
-    // Save changes to the regex pattern for easy saving.
-    findText.addEventListener('input', () => {
-        regexPattern.value = findText.value;
-    });
-
     //Automatically set regex search option when finder opened.
     const event = new MouseEvent('click', {
         bubbles: true,
@@ -67,18 +55,4 @@ require(['vs/editor/editor.main'], function () {
     setTimeout(() => {
         regexCheck.dispatchEvent(event);
     }, 200);
-
-    btnSaveRegex.addEventListener('click', () => {
-        /*if (regexName.value === null ||
-            regexName.value.trim() === "" ||
-            regexPattern.value === null ||
-            regexPattern.value.trim() === "") {
-            alert("Please fill in the blanks.");
-        } else {
-            
-        }*/
-        console.log("clicked");
-        initFileOperations();
-        getSavedRegexes();
-    });
 });

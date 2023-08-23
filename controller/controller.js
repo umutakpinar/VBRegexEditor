@@ -1,7 +1,11 @@
 //import * as monaco from 'monaco-editor';
 
+
 const darkMode = document.getElementById('dark-mode');
 const modelSelector = document.getElementById('form-selector');
+const btnSaveRegex = document.getElementById('save-regex');
+const regexName = document.getElementById('regex-name');
+const regexPattern = document.getElementById('regex-pattern');
 
 require.config({ paths: { vs: '../node_modules/monaco-editor/min/vs' } });
 require(['vs/editor/editor.main'], function () {
@@ -11,6 +15,13 @@ require(['vs/editor/editor.main'], function () {
         language: 'plaintext',
         theme: 'vs-dark'
     });
+    
+    editor.getAction('editor.action.startFindReplaceAction').run(editor,{
+        seedSearchStringFromSelection: false,
+        isRegex: true,
+        matchCase: true,
+    });
+        
 
     darkMode.addEventListener('change', () => {
         if (darkMode.checked) {
@@ -24,7 +35,36 @@ require(['vs/editor/editor.main'], function () {
         monaco.editor.setModelLanguage(editor.getModel(), modelSelector.value);
     });
 
+    btnSaveRegex.addEventListener('click', () => {
+        if(regexName.value === null || 
+            regexName.value.trim() === "" || 
+            regexPattern.value === null || 
+            regexPattern.value.trim() === ""){
+            alert("Please fill in the blanks.");
+        }else{
+            console.log("işlem başarılı");
+        } 
+    });
 
-    //monaco.editor.setModelLanguage(editor.getModel(), "javascript"); // Bu şekilde değiştiriliyor
+    //Bu oluşmadan yapılamaz o nedenleen yukarıda yazılmadı buna dikkat et!
+        const searchWidget = document.querySelector('.find-widget');
+        const regexCheck = document.querySelector('[title="Use Regular Expression (⌥⌘R)"]');
+        const findText = document.querySelector('[title="Find"]');
+        findText.addEventListener('input', () => {
+            regexPattern.value = findText.value;
+        });
+        searchWidget.style.position = "relative";
+        searchWidget.classList.add("box-shadow-diff");
+        searchWidget.style.left = "10px";
+        searchWidget.style.width = "50%";
+        const event = new MouseEvent('click', {
+            bubbles: true,
+            cancelable: true,
+            view: window
+        });
+        setTimeout(() => {
+            regexCheck.dispatchEvent(event);
+        }, 200);
+        
 
 });

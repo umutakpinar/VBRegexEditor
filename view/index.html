@@ -17,7 +17,7 @@
     <title>VBRegexEditor</title>
 </head>
 
-<body class="overflow-auto bg-darken">
+<body class="overflow-hidden bg-warning">
     <!-- Top Appbar Start -->
 
     <div class="collapse" id="navbarToggleExternalContent" data-bs-theme="dark">
@@ -48,7 +48,7 @@
                 <span><i><b>V</b></span><span class="expand-header">akif</i></span><span><i><b>B</b></span><span
                     class="expand-header">ank</i></span><span><i>RegexEditor</i></span>
             </p>
-            <button class="navbar-toggler bg-dark" type="button" data-bs-toggle="offcanvas"
+            <button class="navbar-toggler bg-darken" type="button" data-bs-toggle="offcanvas"
                 data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar"
                 aria-label="Toggle navigation">
                 <span class="bg-dark">
@@ -68,7 +68,7 @@
 
     <!-- Right Menu Drawer -->
 
-    <nav class="navbar fixed-bottom">
+    <nav class="navbar">
         <div class="container">
             <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar"
                 aria-labelledby="offcanvasDarkNavbarLabel">
@@ -192,11 +192,11 @@
                             <h5>Save Regex : </h5>
                             <div class="input-group mb-3">
                                 <span class="input-group-text" id="pattern-name">Pattern Name :</span>
-                                <input type="text" class="form-control" aria-describedby="pattern-name">
+                                <input id="regex-name" type="text" class="form-control" aria-describedby="pattern-name">
                             </div>
                             <div class="input-group mb-3">
                                 <span class="input-group-text" id="pattern">Pattern :</span>
-                                <input type="text" class="form-control" aria-describedby="pattern">
+                                <input id="regex-pattern" type="text" class="form-control" aria-describedby="pattern">
                             </div>
                             <button id="save-regex" class="btn btn-warning">
                                 Save
@@ -221,8 +221,8 @@
     <!-- Right Menu Drawer End -->
 
     <!-- Editor Start -->
-    <div class="container-fluid p-0 bg-dark h-80">
-        <div id="container" class="pt-2" style="height: 100%;"></div>
+    <div id="container-holder" class="container-fluid p-0" style="max-height: 80%;">
+        <div id="container" class="flex-container" style="height: 100%;"></div>
     </div>
     <!-- Editor End -->
 </body>

@@ -43,12 +43,6 @@
     margin-top: 10vh;
 }
 
-.highlighted-text{
-    background-color: rgb(255, 194, 9);
-    color: black;
-    border : 1px solid black;
-}
-
 .box-shadow-diff{
     box-shadow: 1px 1px 1vh rgba(255,194,9,1) !important;
 }

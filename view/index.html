@@ -1,0 +1,231 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+    <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+
+    <!-- Monaco Editor -->
+    <script src="../node_modules/monaco-editor/dev/vs/loader.js"></script>
+    <link rel="stylesheet" href="../node_modules/monaco-editor/dev/vs/editor/editor.main.css">
+
+    <!-- Style -->
+    <link rel="stylesheet" href="../styles/stylesheet.css">
+    <title>VBRegexEditor</title>
+</head>
+
+<body class="overflow-auto bg-darken">
+    <!-- Top Appbar Start -->
+
+    <div class="collapse" id="navbarToggleExternalContent" data-bs-theme="dark">
+        <div class="bg-warning-darker p-4">
+            <h5 class="text-body-emphasis h4">How to use?</h5>
+            <p class="text-body-emphasis">Click somewhere in the editor section then :</p>
+            <p class="text-body-emphasis"> <span class="badge bg-primary">Command/CTRL + F</span> Open Search Panel
+                click "Use Regular Expression" option (<span class="codicon codicon-regex"></span>)</p>
+            <p class="text-body-emphasis"> <span class="badge bg-primary">F1</span> Command Palette for all shortcuts
+            </p>
+            <p class="text-body-emphasis"> <span class="badge bg-primary">Mouse Right Click</span> Option menu</p>
+        </div>
+    </div>
+    <nav class="navbar navbar-dark bg-warning shadow-lg">
+        <div class="container-fluid h-10">
+            <button class="navbar-toggler bg-dark" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+                <span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-arrow-bar-down" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd"
+                            d="M1 3.5a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13a.5.5 0 0 1-.5-.5zM8 6a.5.5 0 0 1 .5.5v5.793l2.146-2.147a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 0 1 .708-.708L7.5 12.293V6.5A.5.5 0 0 1 8 6z" />
+                    </svg>
+                </span>
+            </button>
+            <p id="appbar-header" class="h2 text-center p-1">
+                <span><i><b>V</b></span><span class="expand-header">akif</i></span><span><i><b>B</b></span><span
+                    class="expand-header">ank</i></span><span><i>RegexEditor</i></span>
+            </p>
+            <button class="navbar-toggler bg-dark" type="button" data-bs-toggle="offcanvas"
+                data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar"
+                aria-label="Toggle navigation">
+                <span class="bg-dark">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-gear" viewBox="0 0 16 16">
+                        <path
+                            d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492zM5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0z" />
+                        <path
+                            d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52l-.094-.319zm-2.633.283c.246-.835 1.428-.835 1.674 0l.094.319a1.873 1.873 0 0 0 2.693 1.115l.291-.16c.764-.415 1.6.42 1.184 1.185l-.159.292a1.873 1.873 0 0 0 1.116 2.692l.318.094c.835.246.835 1.428 0 1.674l-.319.094a1.873 1.873 0 0 0-1.115 2.693l.16.291c.415.764-.42 1.6-1.185 1.184l-.291-.159a1.873 1.873 0 0 0-2.693 1.116l-.094.318c-.246.835-1.428.835-1.674 0l-.094-.319a1.873 1.873 0 0 0-2.692-1.115l-.292.16c-.764.415-1.6-.42-1.184-1.185l.159-.291A1.873 1.873 0 0 0 1.945 8.93l-.319-.094c-.835-.246-.835-1.428 0-1.674l.319-.094A1.873 1.873 0 0 0 3.06 4.377l-.16-.292c-.415-.764.42-1.6 1.185-1.184l.292.159a1.873 1.873 0 0 0 2.692-1.115l.094-.319z" />
+                    </svg>
+                </span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Top Appbar End -->
+
+    <!-- Right Menu Drawer -->
+
+    <nav class="navbar fixed-bottom">
+        <div class="container">
+            <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar"
+                aria-labelledby="offcanvasDarkNavbarLabel">
+                <div class="offcanvas-header">
+                    <h3 class="offcanvas-title" id="offcanvasDarkNavbarLabel"><u>Settings</u></h3>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
+                        aria-label="Close">
+                    </button>
+                </div>
+                <hr>
+                <!-- Drawer Body Start -->
+                <div class="offcanvas-body">
+                    <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                        <li>
+                            <h5>UI Theme : </h5>
+                            <div class="form-check form-switch" title='Toggle dark mode.'>
+                                <input class="form-check-input" type="checkbox" id="dark-mode" checked>
+                                <label class="form-check-label" for="dark-mode">Dark Mode</label>
+                            </div>
+                        </li>
+                        <hr>
+                        <li
+                            title="You can select a language model for highlighting syntax errors and other language rules. It can be helpful for creating a regex pattern. Also slecting a language model enables suggestions like intellisense.">
+                            <h5>Language Model : </h5>
+                            <div class="dropdown">
+                                <select class="form-select form-select-lg bg-dark text-light" id="form-selector">
+                                    <option value="1">plaintext</option>
+                                    <option value="2">abap</option>
+                                    <option value="3">apex</option>
+                                    <option value="4">azcli</option>
+                                    <option value="5">bat</option>
+                                    <option value="6">bicep</option>
+                                    <option value="7">cameligo</option>
+                                    <option value="8">clojure</option>
+                                    <option value="9">coffeescript</option>
+                                    <option value="10">c</option>
+                                    <option value="11">cpp</option>
+                                    <option value="12">csharp</option>
+                                    <option value="13">csp</option>
+                                    <option value="14">css</option>
+                                    <option value="15">cypher</option>
+                                    <option value="16">dart</option>
+                                    <option value="17">dockerfile</option>
+                                    <option value="18">ecl</option>
+                                    <option value="19">elixir</option>
+                                    <option value="20">flow9</option>
+                                    <option value="21">fsharp</option>
+                                    <option value="22">freemarker2</option>
+                                    <option value="23">freemarker2.tag-angle.interpolation-dollar</option>
+                                    <option value="24">freemarker2.tag-bracket.interpolation-dollar</option>
+                                    <option value="25">freemarker2.tag-angle.interpolation-bracket</option>
+                                    <option value="26">freemarker2.tag-bracket.interpolation-bracket</option>
+                                    <option value="27">freemarker2.tag-auto.interpolation-dollar</option>
+                                    <option value="28">freemarker2.tag-auto.interpolation-bracket</option>
+                                    <option value="29">go</option>
+                                    <option value="30">graphql</option>
+                                    <option value="31">handlebars</option>
+                                    <option value="32">hcl</option>
+                                    <option value="33">html</option>
+                                    <option value="34">ini</option>
+                                    <option value="35">java</option>
+                                    <option value="36">javascript</option>
+                                    <option value="37">julia</option>
+                                    <option value="38">kotlin</option>
+                                    <option value="39">less</option>
+                                    <option value="40">lexon</option>
+                                    <option value="41">lua</option>
+                                    <option value="42">liquid</option>
+                                    <option value="43">m3</option>
+                                    <option value="44">markdown</option>
+                                    <option value="45">mips</option>
+                                    <option value="46">msdax</option>
+                                    <option value="47">mysql</option>
+                                    <option value="48">objective-c</option>
+                                    <option value="49">pascal</option>
+                                    <option value="50">pascaligo</option>
+                                    <option value="51">perl</option>
+                                    <option value="52">pgsql</option>
+                                    <option value="53">php</option>
+                                    <option value="54">pla</option>
+                                    <option value="55">postiats</option>
+                                    <option value="56">powerquery</option>
+                                    <option value="57">powershell</option>
+                                    <option value="58">proto</option>
+                                    <option value="59">pug</option>
+                                    <option value="60">python</option>
+                                    <option value="61">qsharp</option>
+                                    <option value="62">r</option>
+                                    <option value="63">razor</option>
+                                    <option value="64">redis</option>
+                                    <option value="65">redshift</option>
+                                    <option value="66">restructuredtext</option>
+                                    <option value="67">ruby</option>
+                                    <option value="68">rust</option>
+                                    <option value="69">sb</option>
+                                    <option value="70">scala</option>
+                                    <option value="71">scheme</option>
+                                    <option value="72">scss</option>
+                                    <option value="73">shell</option>
+                                    <option value="74">sol</option>
+                                    <option value="75">aes</option>
+                                    <option value="76">sparql</option>
+                                    <option value="77">sql</option>
+                                    <option value="78">st</option>
+                                    <option value="79">swift</option>
+                                    <option value="80">systemverilog</option>
+                                    <option value="81">verilog</option>
+                                    <option value="82">tcl</option>
+                                    <option value="83">twig</option>
+                                    <option value="84">typescript</option>
+                                    <option value="85">vb</option>
+                                    <option value="86">wgsl</option>
+                                    <option value="87">xml</option>
+                                    <option value="88">yaml</option>
+                                    <option value="89">json</option>
+                                </select>
+                            </div>
+                        </li>
+                        <hr>
+                        <li>
+                            <h5>Save Regex : </h5>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" id="pattern-name">Pattern Name :</span>
+                                <input type="text" class="form-control" aria-describedby="pattern-name">
+                            </div>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" id="pattern">Pattern :</span>
+                                <input type="text" class="form-control" aria-describedby="pattern">
+                            </div>
+                            <button id="save-regex" class="btn btn-warning">
+                                Save
+                            </button>
+                        </li>
+                        <hr>
+                        <li>
+                            <h5>Saved Regexes : </h5>
+                            <span>Burada Liste İçerisinde göstereceğim belki dışarıya bir json dosyası olarak kaydeder
+                                buradan liste olarak okur halinde manipule ederim. Belki show in explorer şeklinde gibi
+                                bir buton da koyulabilir.</span>
+                            <!-- TODO : Burada Liste İçerisinde göstereceğim belki dışarıya bir json dosyayı olarak kayddeder buradan okur liste halinde manipule ederim. -->
+                        </li>
+                    </ul>
+                </div>
+                <!-- Drawer Body End -->
+            </div>
+        </div>
+    </nav>
+
+
+    <!-- Right Menu Drawer End -->
+
+    <!-- Editor Start -->
+    <div class="container-fluid p-0 bg-dark h-80">
+        <div id="container" class="pt-2" style="height: 100%;"></div>
+    </div>
+    <!-- Editor End -->
+</body>
+<script src="../controller/controller.js"></script>
+
+</html>

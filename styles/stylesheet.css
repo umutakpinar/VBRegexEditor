@@ -1,0 +1,44 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.h-10{
+    height: 10%;
+}
+
+.bg-warning-darker{
+    background-color: #c69400;
+}
+
+#appbar-header{
+    font-family: "Calibri", sans-serif;
+}
+
+#appbar-header:hover .expand-header{
+    max-width: 100%;
+    padding-right: 4px;
+    transition: max-width 0.3s ease-in-out;
+}
+
+.expand-header{
+    display: inline-block;
+    max-width: 0%;
+    vertical-align: bottom;
+    overflow: hidden;
+    white-space: nowrap;
+    transition: max-width 0.5s ease-in-out;
+}
+
+.h-90{
+    height: 90%;
+}
+
+.bg-darken{
+    background-color: rgb(31,31,31);
+}
+
+.mt-10{
+    margin-top: 10vh;
+}

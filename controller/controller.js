@@ -20,7 +20,9 @@ require(['vs/editor/editor.main'], function () {
         }
     });
 
-    
+    modelSelector.addEventListener('change', () => {
+        monaco.editor.setModelLanguage(editor.getModel(), modelSelector.value);
+    });
 
 
     //monaco.editor.setModelLanguage(editor.getModel(), "javascript"); // Bu şekilde değiştiriliyor

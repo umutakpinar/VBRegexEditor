@@ -5,7 +5,7 @@
   ---
     Clone th repo. Locate the cloned folder. Open terminal and run `npm install`,
     - **via browser** : Double click main.html file or open it with any web browser (needs node.js).
-    - **via electron.js**  : Open terminal, run `npm start` (needs electron.js).
+    - **via electron.js**  : Open terminal, run `npm start`.
 
 - Run VBRegexEditor with installation :
   ---

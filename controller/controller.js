@@ -11,6 +11,7 @@ require(['vs/editor/editor.main'], function () {
         language: 'plaintext',
         theme: 'vs-dark',
         automaticLayout: true,
+        mouseWheelZoom: true
     });
 
     // Opens the search box at the beginning. 

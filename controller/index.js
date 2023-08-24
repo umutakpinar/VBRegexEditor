@@ -12,6 +12,7 @@ app.on("ready", () => {
         minWidth : 960,
         width : 1920,
         height : 1080,
+        autoHideMenuBar: true,
     });
 
     mainWindow.loadURL(

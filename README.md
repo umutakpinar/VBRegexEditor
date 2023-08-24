@@ -1,5 +1,12 @@
 # VBRegexEditor
   Regex Editor Desktop App.
+- Features
+    - Shows matches.
+    - Replace matches with different word.
+    - Syntax highlighting for 80+ different programming languages.
+    - Multiple cursor support.
+    - Pinch to zoom.
+    - Dark/Light Mode
 
 - Run VBRegexEditor Without Build Files :
   ---
